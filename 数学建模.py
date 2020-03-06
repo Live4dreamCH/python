@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import math
 
 # 1:
     # M = np.array([[1, 1 / 2], [0, 1 / 2]])
@@ -84,47 +85,45 @@ import random
     # print('hour=',hour,'which=',which)
 
 # 6:
-people = []
 M =\
 [[(4, 0, 0), (2, 2, 0), (0, 4, 0)],
 [(2, 2, 0), (1, 2, 1), (0, 2, 2)],
 [(0, 4, 0), (0, 2, 2), (0, 0, 4)]]
-AA, Aa, aa = 50, 20, 30
+AA, Aa, aa = 60, 10, 30
 an = [AA]
 bn = [Aa]
 cn = [aa]
-for i in range(AA):
-    people.append(1)
-for i in range(Aa):
-    people.append(2)
-for i in range(aa):
-    people.append(3)
-
+people = [AA, AA + Aa, AA + Aa + aa]
 print('generation=', 0, 'AA=', AA, 'Aa=', Aa, 'aa=', aa)
 print('predict:AA=', round((AA + Aa / 2)** 2 / 100), 'Aa=', round(2*(AA + Aa / 2)*(Aa / 2 + aa) / 100), 'aa=', round((Aa / 2 + aa)** 2 / 100))
 g=101
 for generation in range(1, g):
-    l = len(people)
+    l = people[2]
     AA, Aa, aa = 0, 0, 0
-    for i in range(l):
-        x = people[i]
-        y = people[random.randint(0, l - 1)]
-        for j in range(M[x-1][y-1][0]):
+    for i in np.linspace(0,l,100):
+        if i <= people[0]:
+            x = 0
+        elif i <= people[1]:
+            x = 1
+        else:
+            x = 2
+        r = random.uniform(0, l)
+        if r <= people[0]:
+            y = 0
+        elif r <= people[1]:
+            y = 1
+        else:
+            y = 2
+        for j in range(M[x][y][0]):
             AA += 1
-        for j in range(M[x-1][y-1][1]):
+        for j in range(M[x][y][1]):
             Aa += 1
-        for j in range(M[x-1][y-1][2]):
+        for j in range(M[x][y][2]):
             aa += 1
-    people = []
-    AA = round(AA / l * 25)
-    Aa = round(Aa / l * 25)
-    aa = round(aa / l * 25)
-    for i in range(AA):
-        people.append(1)
-    for i in range(Aa):
-        people.append(2)
-    for i in range(aa):
-        people.append(3)
+    AA = AA / 4
+    Aa = Aa / 4
+    aa = aa / 4
+    people = [AA, AA + Aa, AA + Aa + aa]
     an.append(AA)
     bn.append(Aa)
     cn.append(aa)
