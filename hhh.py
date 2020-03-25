@@ -1,19 +1,19 @@
-class stu:
-    stuID = 218546551
-    name = ''
-    grade = 82
-    def cheat(self):
-        self.grade = 0
-    def tuixue(self):
-        del self
-    def wuxian(self, other):
-        other.grade = 0
+# def fib(n):
+#     if n <= 2:
+#         return 1
+#     return fib(n - 1) + fib(n - 2)
+    
+# for i in range(1, 1001):
+#     print(i, ':', fib(i))
 
+answers = [-1 for i in range(10005)]
+answers[1] = 1
+answers[2] = 1
 
-if __name__ == "__main__":
-    a = stu()
-    b = stu()
-    a.cheat()
-    a.grade = 60
-    b.wuxian(a)
-    print()
+def fib(n):
+    if answers[n] == -1:
+        answers[n] = fib(n - 1) + fib(n - 2)
+    return answers[n]
+    
+for i in range(1, 10001):
+    print(i, ':', fib(i))
