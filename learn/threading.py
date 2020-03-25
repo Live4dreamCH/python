@@ -34,6 +34,6 @@ thread2 = myThread("Thread-2", '数学', 7, public)
 # 开启新线程
 thread1.start()
 thread2.start()
-thread1.join()
 thread2.join()
+thread1.join()
 print ("退出主线程")
