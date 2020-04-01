@@ -1,7 +1,7 @@
 from sympy import solve, symbols
 
 
-def N_JFET(R_S, I_DSS, U_GSOFF, R_D, E, R_L, R_Glow, R_Ghigh = 1e12):
+def N_JFET(R_S, I_DSS, U_GSOFF, R_D, E, R_L, R_Glow, R_Ghigh=1e12):
     # N-JFET
     # R_S = 120
     # I_DSS = 19.7e-3
@@ -99,3 +99,4 @@ def N_MOSFET(R_S, R_Ghigh, R_Glow, K, U_GSTH, R_D, E, R_L):
 # N_MOSFET(1e3, 430e3, 1e6, 0.0502, 2, 0, 12, 1e3)  # D
 # N_MOSFET(0.5e3, 400e3, 200e3, 0.0502, 2, 2e3, 12, 20e3)  # G
 # N_MOSFET(225, 100e3, 100e3, 2.2, 3.695, 1e3, 10, 1e3)  # S,P-MOSFET
+N_MOSFET(140, 3e6, 2e6, 0.055, 2.7, 500, 10, 1e15)

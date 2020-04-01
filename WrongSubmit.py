@@ -36,11 +36,12 @@ def SubmitWrong():
         "Upgrade-Insecure-Requests": "1",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
     }
-    response1 = my_session.get(my_url1, headers=my_headers1)
+    my_session.headers=my_headers1
+    response1 = my_session.get(my_url1)
     print(response1.status_code)
     if response1.status_code != 200:
         print("加载cookies失败!")
-    print("cookie加载成功:", response1.cookies)
+    print("cookie加载成功:")
 
 
     num = str(randint(100000000, 9999999999))
@@ -63,7 +64,9 @@ def SubmitWrong():
         "Upgrade-Insecure-Requests": "1",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
     }
+    my_session.headers = my_header
     respond = my_session.post(url, data=my_data)
+    xxx=my_session.resolve_redirects(respond)
     print(respond.status_code)
     if respond.status_code != 200:
         print("发送账号密码失败!")
@@ -71,6 +74,7 @@ def SubmitWrong():
         print("发送成功:", num, psw)
     my_session.close()
     del my_session
+
 
 threadlist=[]
 while True:
