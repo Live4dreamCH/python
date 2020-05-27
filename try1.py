@@ -8,7 +8,9 @@ def fun123(x):
 
 if __name__ == "__main__":
     import socket
-    print(socket.gethostbyname_ex('live.bilibili.com'))
+    print(socket.gethostname())
+    print(socket.gethostbyname('bb.xjtu.edu.cn'))
+    print(socket.gethostbyname_ex('bb.xjtu.edu.cn'))
 
     import os
     os.system('pause')
